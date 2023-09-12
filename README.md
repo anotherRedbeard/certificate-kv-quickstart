@@ -37,11 +37,32 @@ To run this code locally all you need to do is the following:
     ```azurecli-interactive
     az login
     ```
-    
+
     Here is a command you can use to ensure you have the proper permissions.
 
     ```azurecli
     az keyvault set-policy --name <your-key-vault-name> --upn user@domain.com --certificate-permissions delete get list create purge
     ```
+
+* You will need to setup the KEY_VAULT_NAME environment variable
+
+Windows
+
+```cmd
+set KEY_VAULT_NAME=<your-key-vault-name>
+````
+
+Windows PowerShell
+
+```powershell
+$Env:KEY_VAULT_NAME="<your-key-vault-name>"
+```
+
+macOS or Linux
+
+```bash
+export KEY_VAULT_NAME=<your-key-vault-name>
+```
+
 * Run the `dotnet build` command
 * Execute the code by running `dotnet run <command> <certificate-name>`

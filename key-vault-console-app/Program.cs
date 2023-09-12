@@ -15,6 +15,10 @@ class Program
         var command = args[0];
         var certificateName = args[1];
         var keyVaultName = Environment.GetEnvironmentVariable("KEY_VAULT_NAME") ?? string.Empty;
+        if (string.IsNullOrWhiteSpace(keyVaultName))
+        {
+            throw new Exception("Missing environment variable KEY_VAULT_NAME");
+        }
         var kvUri = "https://" + keyVaultName + ".vault.azure.net";
         var client = new CertificateClient(new Uri(kvUri), new DefaultAzureCredential());
 
